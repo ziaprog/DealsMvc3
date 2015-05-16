@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SirfDealsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SirfDealsDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Products" EntityType="SirfDealsDBModel.Product" />
+    <EntitySet Name="Categories" EntityType="SirfDealsDBModel.Category" />
+  </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ImageId" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CouponCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AffiliateLink" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Type="DateTime" Name="ExpiryDate" Precision="3" />
+    <Property Type="Int32" Name="CategoryId" />
+    <Property Type="Int32" Name="UserId" />
+    <Property Type="DateTime" Name="PostedDate" Precision="3" />
+    <Property Type="String" Name="Website" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Clicks" />
+    <Property Type="Int32" Name="PercentageOff" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Type="Int32" Name="CategoryId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

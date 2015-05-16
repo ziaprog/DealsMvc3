@@ -1,0 +1,96 @@
+﻿@using PagedList;
+
+@model PagedList.IPagedList<SirfDealsMvc3.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    int i = 0;
+    
+}
+@foreach (var item in Model)
+{
+    if (i == 0)
+    {
+    @:<div class='row'>
+
+    }
+     
+    <!-- PROD. ITEM -->
+    <div class="col-sm-3">
+        <div class="thumbnail">
+            <!-- IMAGE CONTAINER-->
+            <img alt="post image" src="@item.ImageUrl">
+            <!--END IMAGE CONTAINER-->
+            <!-- CAPTION -->
+            <div class="caption">
+                <h3>@Html.Raw(HttpUtility.HtmlDecode(item.Title))</h3>
+
+
+                <div class="row-fluid">
+                    <div class="span6">
+                        <p class="lead">@item.Price</p>
+                    </div>
+                    <div class="span6">
+                        <a class="btn btn-success btn-block" target="_blank" href="@item.AffiliateLink&affid=ziaaspgma1">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <!--END CAPTION -->
+        </div>
+        <!-- END: THUMBNAIL -->
+    </div>
+    <!-- PROD. ITEM -->
+    i = i + 1;
+
+    if (i == 4)
+    {
+   @:</div>
+                                            i = 0;
+    }
+
+
+
+}
+<div>
+    
+      Page@(Model.PageCount < Model.PageNumber?0:Model.PageNumber)
+    of @Model.PageCount
+
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<","Index",new {page=1})
+        @Html.Raw(" ");
+         @Html.ActionLink("< Prev","Index",new {page=Model.PageNumber-1})
+    }
+    else
+    {
+     @:<<   
+     @Html.Raw(" ");
+     @:< Prev
+
+    }
+
+    @if (Model.HasNextPage)
+    {
+         @Html.ActionLink("Next >","Index",new {page=Model.PageNumber+1})
+        @Html.Raw(" ");
+         @Html.ActionLink(">>","Index",new {page=Model.PageCount})
+    }
+     else
+    {
+     @:Next >   
+     @Html.Raw(" ");
+     @:>>
+
+    }
+</div>
+
+@*<ul class="pagination pagination-lg">
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+</ul>*@

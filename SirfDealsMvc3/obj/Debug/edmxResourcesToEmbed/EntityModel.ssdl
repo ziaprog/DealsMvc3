@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SirfDealsDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SirfDealsDBModelStoreContainer">
+    <EntitySet Name="Category" EntityType="SirfDealsDBModel.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="SirfDealsDBModel.Store.Products" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ImageId" Type="nvarchar(max)" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" />
+    <Property Name="Price" Type="decimal" />
+    <Property Name="CouponCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AffiliateLink" Type="nvarchar(max)" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="PostedDate" Type="datetime" />
+    <Property Name="Website" Type="nvarchar" MaxLength="50" />
+    <Property Name="Clicks" Type="int" />
+    <Property Name="PercentageOff" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'C:\USERS\ZIA\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\SIRFDEALSMVC3\SIRFDEALSMVC3\APP_DATA\SIRFDEALSDB.MDF.dbo.ProductCategories' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="ProductCategories">
+        <Property Name="CategoryId" Type="int" />
+        <Property Name="ProductId" Type="int" />
+      </EntityType>-->
+</Schema>
